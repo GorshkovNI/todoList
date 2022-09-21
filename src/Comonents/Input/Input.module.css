@@ -1,0 +1,46 @@
+:root{
+    --ligth-black: rgb(21, 21, 55);
+    --red-button: rgb(157, 55, 45);
+    --ligth-red: rgb(255, 78, 57);
+    --white: white;
+    --black: black;
+    --light-blue: #bad8f5;
+}
+
+*{
+    padding: 0;
+    margin: 0;
+    font-size: 1rem;
+}
+
+.input{
+    box-sizing: border-box;
+    height: 3rem;
+    width: 30rem;
+    background-color: var(--ligth-black);
+    color: var(--white);
+    border: 0;
+    border-radius: 5px;
+    padding: 0.5rem 0.5rem 0.5rem 1rem;
+}
+
+.button{
+    box-sizing: border-box;
+    height: 3rem;
+    background-color: var(--red-button);
+    outline: none;
+    border: 1px solid var(--red-button);
+    border-radius: 5px;
+    color: var(--white);
+    padding: 0.25rem;
+    cursor: pointer;
+    margin-left: 1rem;
+}
+
+.button:hover{
+    border: 1px solid var(--white);
+}
+
+.button:active{
+    background-color: var(--ligth-red);
+}

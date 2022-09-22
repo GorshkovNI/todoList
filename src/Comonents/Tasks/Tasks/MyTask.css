@@ -23,6 +23,7 @@
     height: 3rem;
     padding: 1rem;
     background-color: var(--ligth-black);
+    border-left: 5px solid var(--ligth-black);
     margin-bottom: 1.5rem;
 }
 
@@ -30,9 +31,24 @@
     color: white;
 }
 
+.active{
+    border-left: 5px solid var(--ligth-red);
+    text-decoration: line-through;
+    text-decoration-color: var(--white);
+}
 
+.task__Img{
+    position: absolute;
+    width: 1rem;
+    height: 1rem;
+    right: 1rem;
+    stroke: var(--white);
+    cursor: pointer;
+}
 
-
+.task__Img:hover{
+    transform: scale(1.2);
+}
 
 
 

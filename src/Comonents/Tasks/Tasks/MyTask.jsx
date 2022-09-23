@@ -5,16 +5,17 @@ import { addClassNameTask, deleteTask } from '../../../state/store'
 export function MyTask(props){
 
 
-    const linkCheckbox = React.createRef()
-    const [activeState, setActiveState] = useState(false)
+    const linkCheckbox = React.createRef();
+    const [activeState, setActiveState] = useState(false);
+
     let isChecked = (event) =>{
         let isFlag = event.target.checked;
         isFlag ? setActiveState('active') : setActiveState('');
-        props.dispatch(addClassNameTask(props.text, isFlag))
+        props.dispatch(addClassNameTask(props.text, isFlag));
     }
 
     let deleteCurrentTask = () => {
-        props.dispatch(deleteTask(props.id))
+        props.dispatch(deleteTask(props.id));
     }
 
     return(

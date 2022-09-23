@@ -24,6 +24,9 @@ let state = {
     dispatch(action){
         
         if(action.type === ADD_TASK){
+            if(this.store.newTask === '')
+                return
+            
             let newTask = {
                 id: maxId(this.store),
                 text: this.store.newTask

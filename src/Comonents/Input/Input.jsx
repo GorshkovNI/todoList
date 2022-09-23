@@ -1,5 +1,6 @@
 import classes from './Input.module.css'
 import { addTask, updateTask } from '../../state/store'
+import { useKeyPress } from '../hooks/useKeyPress'
 import React from 'react'
 
 
@@ -7,8 +8,6 @@ import React from 'react'
 export function Input(props){
 
     const ref = React.createRef()
-    
-    
     
     let addNewTask = () => {
         props.dispatch(addTask())
@@ -18,6 +17,8 @@ export function Input(props){
         let text = ref.current.value
         props.dispatch(updateTask(text))
     }
+
+    useKeyPress('Enter', addNewTask)
 
     return(
         <div className={classes.wrapper}>

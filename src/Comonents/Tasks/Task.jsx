@@ -3,7 +3,7 @@ import { MyTask } from './Tasks/MyTask'
 
 export function Task(props){
 
-    let listTask = props.task.task.map(el => <MyTask id={el.id} text={el.text} dispatch = {props.dispatch}/>)
+    let listTask = props.task.task.map(el => <MyTask id={el.id} text={el.text} done={el.done} dispatch = {props.dispatch}/>)
 
     return(
         <div className={c.wrapper}>

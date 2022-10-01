@@ -21,67 +21,67 @@ let state = {
         this.rerenderTree = f
     },
 
-    dispatch(action){
-        
+    dispatch(action){     
+         
         if(action.type === ADD_TASK){
             if(this.store.newTask === '')
                 return
             
             let newTask = {
                 id: maxId(this.store),
-                text: this.store.newTask
+                text: this.store.newTask,
+                done: 'nonactive'
             }
+            
             this.store.task.push(newTask)
             this.store.newTask = ''
             this.rerenderTree()
         }
-        if(action.type === UPDATE_INPUT){
+        else if(action.type === UPDATE_INPUT){
             this.store.newTask = action.newTesk
             this.rerenderTree()
         }
-        if(action.type === UPDATE_TASK_NAME){
+        else if(action.type === UPDATE_TASK_NAME){
             for(let txt in this.store.task){
-                if(this.store.task[txt].text === action.nameDoneTask){
-                    this.store.task[txt].done = action.flag;
-                    return
+                if(this.store.task[txt].id === action.idTask){
+                    this.store.task[txt].done = action.done;
                 }
             }
             this.rerenderTree();
         } 
-        if(action.type === DELETE_TASK){
+        else if(action.type === DELETE_TASK){
             for(let d in this.store.task){
                 if(this.store.task[d].id === action.idTask){
                     this.store.task.splice(d, 1);
-                    this.rerenderTree();
-                    return;
                 }
             }
+            this.rerenderTree();
         }
     }
 }
 
-export let addTask = () => {
+export const addTask = () => {
     return{
         type: ADD_TASK
     }
 }
 
-export let updateTask = (text) => {
+export const updateTask = (text) => {
     return{
         type: UPDATE_INPUT,
         newTesk: text
     }
 }
 
-export let addClassNameTask = (text, isFlag) => {
+export const addClassNameTask = (idTask, activeState) => {
     return{
         type: UPDATE_TASK_NAME,
-        nameDoneTask: text,
-        flag: isFlag
+        idTask: idTask,
+        done: activeState
     }
 }
 
-export let deleteTask = (id) => {
+export const deleteTask = (id) => {
     return{
         type: DELETE_TASK,
         idTask: id
@@ -89,14 +89,14 @@ export let deleteTask = (id) => {
 }
 
 export let maxId = (store) => {
-    let max = 0;
-    if(store.task[0]?.id){
-        max = store.task[0].id
-    } 
-    else{
-        return -1;
-    }
     
+    
+    if(store.task.length === 0){
+        return 0
+    } 
+
+    
+    let max = 0
     for(let i in store.task){
         if(store.task[i].id > max){
             max = store.task[i].id;
